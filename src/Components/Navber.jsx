@@ -1,14 +1,29 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const Navber = () => {
     const navlinks = <>
-        <li><Link to ='/'>Home</Link></li>
-        <li><Link to ='/all-foods'>All Foods</Link></li>
-        <li><Link to ='/gallery'>Gallery</Link></li>
-        <li><Link to ='/reg'>Registration</Link></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/all-foods'>All Foods</Link></li>
+        <li><Link to='/gallery'>Gallery</Link></li>
+        <li><Link to='/reg'>Registration</Link></li>
     </>
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast("Log Out succesfull !");
+            })
+            .catch()
+    }
     return (
-        <div className="navbar">
+        <div className="navbar bg-transparent float-start">
+            <Tooltip id="profile" />
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,8 +40,28 @@ const Navber = () => {
                     {navlinks}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <Link to='/login'><a className="btn">Login</a></Link>
+            <div className="navbar-end ">
+
+                {
+                    user &&
+                    <div className="dropdown ">
+                        <div tabIndex={0} role="button" className=" ">
+                            <img className="rounded-full max-w-10 tooltip tooltip-left" data-tooltip-id='profile' data-tooltip-content={user.displayName} src={user ? user.photoURL : ''} alt="" />
+                        </div>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52 absolute -translate-x-40 ">
+                            <li><h1 onClick={handleLogOut} className="font-bold">Log Out</h1></li>
+                        </ul>
+                    </div>
+
+
+                }
+                {
+                    user ? '' :
+                        <Link to='/login'>
+                            <h1 className="btn font-bold">Log in</h1>
+                        </Link>
+                }
+
             </div>
         </div>
     );
