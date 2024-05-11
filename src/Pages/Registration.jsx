@@ -4,11 +4,12 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Registration = () => {
-    const [regError, setRegError] = useState('');
-    const [success, setSuccess] = useState('');
-    const [showPassword, setShowPassword] = useState([])
+    const [showPassword, setShowPassword] = useState([]);
+    
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -23,16 +24,18 @@ const Registration = () => {
         const photo = form.get('photo');
         const email = form.get('email');
         const password = form.get('password')
-        setRegError('');
         if (password.length < 6) {
-            setRegError('Your password should at lest 6')
+            
+            toast('Your password should at lest 6')
         }
         else if (!/[A-Z]/.test(password)) {
-            setRegError('Your password must have an uppercase')
-
+           
+            toast('Your password must have an uppercase')
+            
         }
         else if (!/[a-z]/.test(password)) {
-            setRegError('Your password must have a lowercase')
+            
+            toast('Your password must have a lowercase')
         }
 
         else {
@@ -43,7 +46,8 @@ const Registration = () => {
                     updateUserProfile(full_name, photo).then(() => {
                         navigate(location?.state ? location.state : '/');
                     })
-                    setSuccess('Register Success !!')
+                    Swal.fire("Register Success !!")
+
                 })
                 .catch(error => {
                     console.error(error)
@@ -53,10 +57,12 @@ const Registration = () => {
 
     }
     return (
-        <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/08/07/07/18/table-2600954_1280.jpg)' }}>
+
+       
+        <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/flame-grilled-meat-cooking-flames-generative-ai_188544-12355.jpg?t=st=1715408843~exp=1715412443~hmac=865111b7398cdfba6bf28dc02bf5a06cd0f982a5410efbbe40c02b36414393c7&w=1060)' }}>
             <Helmet>
                 <title>
-                    Masala Manager | Register
+                    Radiant Residence - Register
                 </title>
             </Helmet>
             <div className="hero-overlay bg-opacity-60"></div>
@@ -88,16 +94,15 @@ const Registration = () => {
                                         <input type={showPassword ? 'password' : 'text'} name="password" placeholder="password" className="input input-bordered text-black w-full" required />
                                         {
                                             showPassword ?
-                                                <IoEyeOffSharp onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></IoEyeOffSharp> :
-                                                <FaEye onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></FaEye>
+                                                <IoEyeOffSharp  onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></IoEyeOffSharp> :
+                                                <FaEye  onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></FaEye>
                                         }
                                     </div>
 
                                     <label className="label">
                                         <p className="text-black">Already have a account?<Link to='/login' className="text-blue-800 font-semibold">Log in here</Link></p>
                                     </label>
-                                    <div><p className="text-red-500">{regError}</p></div>
-                                    <div><p className="text-green-500">{success}</p></div>
+                                    
                                 </div>
                                 <div className="form-control mt-6">
                                     <button type="submit" className="btn btn-primary">Register</button>
@@ -108,6 +113,9 @@ const Registration = () => {
                 </div>
             </div>
         </div>
+
+
+
     );
 };
 
