@@ -6,6 +6,7 @@ import Gallery from "../Pages/Gallery";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
 import AddFood from "../Pages/AddFood";
+import FoodDetails from "../Pages/FoodDetails";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -17,8 +18,7 @@ const router = createBrowserRouter([
             },
             {
                 path : '/all-foods',
-                element :<AllFoods></AllFoods>,
-                loader : ()=>fetch(`${import.meta.env.VITE_API_URL}/all-foods`)
+                element :<AllFoods></AllFoods>
             },
             {
                 path : '/gallery',
@@ -36,6 +36,11 @@ const router = createBrowserRouter([
                 path : '/add-food',
                 element:<AddFood></AddFood>
                 
+            },
+            {
+                path: '/food/:id',
+                element:<FoodDetails></FoodDetails>,
+                loader : ({params})=> fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`)
             }
             
         ]
