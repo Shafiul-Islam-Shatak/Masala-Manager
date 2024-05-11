@@ -4,6 +4,7 @@ import Main from "../Layout/Main";
 import AllFoods from "../Pages/AllFoods";
 import Gallery from "../Pages/Gallery";
 import Login from "../Pages/Login";
+import MrkLogin from '../Pages/MrkLogin'
 import Registration from "../Pages/Registration";
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: '/reg',
                 element : <Registration></Registration>
+            },
+            {
+                path: '/test',
+                element :<MrkLogin></MrkLogin>
             }
         ]
     },
