@@ -11,15 +11,14 @@ import toast from 'react-hot-toast';
 
 const Registration = () => {
     const [showPassword, setShowPassword] = useState([]);
-    const [user , setUser] =useState([])
     
 
     const location = useLocation();
     const navigate = useNavigate();
 
     // setRegError('')
-    const { createUser, updateUserProfile } = useContext(AuthContext);
-    const handleRegister = e => {
+    const { createUser, updateUserProfile , user, setUser } = useContext(AuthContext);
+    const handleRegister = async e => {
         setShowPassword('')
         e.preventDefault();
         const form = new FormData(e.currentTarget);
@@ -40,13 +39,13 @@ const Registration = () => {
         else {
 
             // creating a user 
-            createUser(email, password)
-                .then(() => {
+           await createUser(email, password)
+                .then(()  => { 
                     updateUserProfile(full_name, photo).then(() => {
                         navigate(location?.state ? location.state : '/');
+                        setUser({...user, photoURL :photo , displayName : full_name})
                     })
                     Swal.fire("Register Success !!")
-                    setUser({...user, photoURL :photo , displayName : full_name})
 
                 })
                 .catch(error => {
@@ -59,10 +58,10 @@ const Registration = () => {
     return (
 
        
-        <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/flame-grilled-meat-cooking-flames-generative-ai_188544-12355.jpg?t=st=1715408843~exp=1715412443~hmac=865111b7398cdfba6bf28dc02bf5a06cd0f982a5410efbbe40c02b36414393c7&w=1060)' }}>
+        <div className="hero min-h-screen " style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/flame-grilled-meat-cooking-flames-generative-ai_188544-12355.jpg?t=st=1715408843~exp=1715412443~hmac=865111b7398cdfba6bf28dc02bf5a06cd0f982a5410efbbe40c02b36414393c7&w=1060)' }}>
             <Helmet>
                 <title>
-                    Radiant Residence - Register
+                    Masala Manager | Register
                 </title>
             </Helmet>
             <div className="hero-overlay bg-opacity-60"></div>

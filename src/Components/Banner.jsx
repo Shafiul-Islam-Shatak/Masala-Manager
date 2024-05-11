@@ -9,26 +9,39 @@ import 'animate.css';
 import 'swiper/css'
 // Import Swiper styles
 import 'swiper/css';
+import Slider from './Slider';
 
 const Banner = () => {
     return (
 
         <div className=''>
 
-            <div className="mx-auto  border border-green-500">
-                <Swiper className='w-3/4 mx-auto  border border-red-600'
+            <div className="mx-auto ">
+                <Swiper className='w-3/4 mx-auto z-10 relative  '
                     modules={[Navigation, Pagination, Scrollbar, Autoplay]}
                     spaceBetween={50}
                     slidesPerView={1}
-                    // loop={true}
-                    // autoplay={{ delay: 3500 }}
-                // onSlideChange={() => console.log('slide change')}
-                // onSwiper={(swiper) => console.log(swiper)}
+                    loop={true}
+                    autoplay={{ delay: 3500 }}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
                 >
+                    {/* slider 1 */}
+                    <SwiperSlide >
+                        <Slider text={'Streamline restaurant operations with ease. From orders to inventory, simplify management tasks for efficient and delightful dining experiences.'} image={'https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg?t=st=1715429010~exp=1715432610~hmac=0d608e6a3d87bfbb686f53e6ba3d426bc4f74c2d289172fe2759bb3f565abcd8&w=900' }></Slider>
+                    </SwiperSlide>
 
-                    <SwiperSlide className=''><img className='rounded-2xl' src="https://img.freepik.com/premium-photo/cropped-image-person-drawing-paper_1048944-3280274.jpg?w=1060" alt="" /></SwiperSlide>
-                    <SwiperSlide><img className='rounded-2xl' src="https://img.freepik.com/free-photo/tranquil-scene-reflects-beauty-mountain-range-generative-ai_188544-12627.jpg?t=st=1714151894~exp=1714155494~hmac=d0e3702caf35aa0664abf3adc87abca80895ae6c9aa7b286e2297310232fde93&w=1060" alt="" /></SwiperSlide>
-                    <SwiperSlide><img className='rounded-2xl ' src="https://img.freepik.com/free-photo/painting-flowers-field_188544-8649.jpg?t=st=1714151961~exp=1714155561~hmac=85839fc85272c3c9c686d46f4b61978cb713aa1f9c656157df4276bf54e2951f&w=1060" alt="" /></SwiperSlide>
+                    {/* slider 2 */}
+                    <SwiperSlide >
+                        <Slider text={'Your all-in-one solution for restaurant success. Seamlessly manage orders, inventory, and staff to elevate dining experiences and boost efficiency'} image={'https://img.freepik.com/free-photo/happy-waiter-serving-food-group-cheerful-friends-pub_637285-12525.jpg?t=st=1715429066~exp=1715432666~hmac=6302b5777f7b9413a45463bc9eccb55b14085e1f899082486803f1cacf7c2fea&w=900'}></Slider>
+                    </SwiperSlide>
+
+                    {/* slider 3 */}
+                    <SwiperSlide >
+                        <Slider text={'Elevating restaurant management. Effortlessly streamline orders, inventory, and staff coordination for a seamless dining experience and business growth.'} image={'https://img.freepik.com/premium-photo/restaurant-ritz-carlton-toronto_865967-25259.jpg?w=900' }></Slider>
+                    </SwiperSlide>
+
+
 
                 </Swiper>
             </div>
