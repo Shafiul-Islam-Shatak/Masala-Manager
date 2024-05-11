@@ -5,10 +5,13 @@ import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+import toast from 'react-hot-toast';
+
 
 const Registration = () => {
     const [showPassword, setShowPassword] = useState([]);
+    const [user , setUser] =useState([])
     
 
     const location = useLocation();
@@ -25,17 +28,13 @@ const Registration = () => {
         const email = form.get('email');
         const password = form.get('password')
         if (password.length < 6) {
-            
-            toast('Your password should at lest 6')
+            toast.error("Your password should at lest 6")
         }
         else if (!/[A-Z]/.test(password)) {
-           
-            toast('Your password must have an uppercase')
-            
+            toast.error("Your password must have an uppercase")            
         }
         else if (!/[a-z]/.test(password)) {
-            
-            toast('Your password must have a lowercase')
+            toast.error("Your password must have a lowercase")
         }
 
         else {
@@ -47,6 +46,7 @@ const Registration = () => {
                         navigate(location?.state ? location.state : '/');
                     })
                     Swal.fire("Register Success !!")
+                    setUser({...user, photoURL :photo , displayName : full_name})
 
                 })
                 .catch(error => {

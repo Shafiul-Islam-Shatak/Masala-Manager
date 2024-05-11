@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import { toast } from "react-toastify";
+import toast from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 
@@ -17,7 +17,7 @@ const Navber = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                toast("Log Out succesfull !");
+                toast.success("Log Out succesfull !");
             })
             .catch()
     }

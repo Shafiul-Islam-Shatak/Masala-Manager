@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 import { Helmet } from "react-helmet-async";
 import { IoEyeOffSharp } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
@@ -25,17 +24,17 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 console.log(result.user);
-                toast("Log in succesfull !");
+                toast.success("Log in succesfull !");
                 navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
                 console.log(error);
-                toast("Log in faild ! please check your email and password")
+                toast.error("Log in faild ! please check your email and password")
             })
     }
     const handleSocialLogIn = (socialProvider) => {
         socialProvider().then((result) => {
-            toast("Log in succesfull !");
+            toast.success("Log in succesfull !");
             if (result.user) {
                 navigate(location?.state ? location.state : '/')
             }

@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Navber from "../Components/Navber";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 
 const Main = () => {
     return (
         <div>
-            <ToastContainer></ToastContainer>
+            <Toaster></Toaster>
             <Navber></Navber>
             <Outlet></Outlet>
         </div>
