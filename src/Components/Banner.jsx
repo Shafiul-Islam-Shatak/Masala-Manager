@@ -22,13 +22,13 @@ const Banner = () => {
                     spaceBetween={50}
                     slidesPerView={1}
                     loop={true}
-                    autoplay={{ delay: 3500 }}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    autoplay={{ delay: 4000 }}
+                    // onSlideChange={() => console.log('slide change')}
+                    // onSwiper={(swiper) => console.log(swiper)}
                 >
                     {/* slider 1 */}
                     <SwiperSlide >
-                        <Slider text={'Streamline restaurant operations with ease. From orders to inventory, simplify management tasks for efficient and delightful dining experiences.'} image={'https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg?t=st=1715429010~exp=1715432610~hmac=0d608e6a3d87bfbb686f53e6ba3d426bc4f74c2d289172fe2759bb3f565abcd8&w=900' }></Slider>
+                        <Slider text={'Streamline restaurant operations with ease. From orders to inventory, simplify management tasks for efficient and delightful dining experiences.'} image={'https://img.freepik.com/free-photo/people-ramadan-celebration_23-2151344679.jpg?t=st=1715430856~exp=1715434456~hmac=d213f9cb9f9ad1e935482a550f7eaaec761e423661099f38125058e26b3e9a14&w=900' }></Slider>
                     </SwiperSlide>
 
                     {/* slider 2 */}

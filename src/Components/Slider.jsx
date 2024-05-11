@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+
 
 const Slider = ({ image, text }) => {
     return (
@@ -22,5 +24,9 @@ const Slider = ({ image, text }) => {
         </div>
     );
 };
+Slider.propTypes = {
+    image: PropTypes.object.isRequired,
+    text: PropTypes.object.isRequired
+}
 
 export default Slider;
