@@ -11,6 +11,7 @@ import PurchasePage from "../Pages/PurchasePage";
 import ErrorPage from "../Pages/ErrorPage";
 import MyFood from "../Pages/MyFood";
 import PrivateRouter from "./PrivateRouter";
+import UpdateMyFood from "../Pages/UpdateMyFood";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
                 path: '/purchase/:id',
                 element:<PrivateRouter><PurchasePage></PurchasePage></PrivateRouter>,
                 loader : ({params})=> fetch(`${import.meta.env.VITE_API_URL}/purchase/${params.id}`)
+            },
+            {
+                path: '/update/:id',
+                element:<UpdateMyFood></UpdateMyFood>,
+                loader : ({params})=> fetch(`${import.meta.env.VITE_API_URL}/update/${params.id}`)
             },
             {
                 path :'/my-foods/:email',

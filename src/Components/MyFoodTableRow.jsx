@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
+// import { useContext } from 'react';
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+// import { AuthContext } from '../Provider/AuthProvider';
 
 
-const MyFoodTableRow = ({ myFood ,myNewfoods , setMyNewFoods }) => {
+const MyFoodTableRow = ({ myFood, myNewfoods, setMyNewFoods }) => {
     const { image, food_name, price, _id } = myFood;
+    // const {user} = useContext(AuthContext)
 
     const handleDelete = (_id) => {
         console.log(_id);
@@ -41,6 +45,8 @@ const MyFoodTableRow = ({ myFood ,myNewfoods , setMyNewFoods }) => {
         });
 
     }
+
+
     return (
         <tr>
             <td>
@@ -57,22 +63,26 @@ const MyFoodTableRow = ({ myFood ,myNewfoods , setMyNewFoods }) => {
             </td>
             <td>{price}</td>
             <td>
-                <button>
-                    <CiEdit className='h-6 w-6'></CiEdit>
-                </button>
+                <Link to={`/update/${_id}`}>
+                    <button >
+                        <CiEdit className='h-6 w-6'></CiEdit>
+                    </button>
+                </Link>
             </td>
             <td>
                 <button onClick={() => handleDelete(_id)}>
                     <MdDeleteForever className='h-6 w-6'></MdDeleteForever>
                 </button>
             </td>
+
         </tr>
+
     );
 };
 MyFoodTableRow.propTypes = {
     myFood: PropTypes.object.isRequired,
-    myNewfoods :PropTypes.array.isRequired,
-    setMyNewFoods :PropTypes.array.isRequired
+    myNewfoods: PropTypes.array.isRequired,
+    setMyNewFoods: PropTypes.func.isRequired
 }
 
 export default MyFoodTableRow;

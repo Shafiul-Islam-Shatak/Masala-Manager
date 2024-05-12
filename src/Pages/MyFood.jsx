@@ -4,11 +4,7 @@ import { useState } from "react";
 
 const MyFood = () => {
     const myFoods = useLoaderData();
-    console.log(myFoods);
     const [myNewfoods , setMyNewFoods] = useState(myFoods)
-    console.log(myNewfoods);
-
-
 
     return (
         <div className="w-3/4 mx-auto">
