@@ -18,7 +18,7 @@ const AllFoods = () => {
         <div>
             <div>
                 <div data-aos="fade-up">
-                    <h2 className="text-[#B18B5E] font-bold text-3xl md:text-5xl  text-center mb-10 mt-10 w-3/4 mx-auto">Indulge in Flavorful Journeys, Every Bite Tells a Story!</h2>
+                    <h2 className="text-[#B18B5E] font-bold text-3xl md:text-5xl  text-center mb-10  w-3/4 mx-auto">Indulge in Flavorful Journeys, Every Bite Tells a Story!</h2>
                     <p className="text-lg px-3 md:w-3/4 mx-auto text-center mb-10 md:mt-10   mt-3">Savor culinary adventures with each dish, where every bite narrates a tale of flavor and tradition. From savory bites to decadent treats, our foods promise an unforgettable journey through the vibrant tapestry of taste</p>
                 </div>
                

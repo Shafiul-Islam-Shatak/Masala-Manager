@@ -5,14 +5,14 @@ import Swal from "sweetalert2";
 
 const PurchasePage = () => {
     const food = useLoaderData()
-    const { food_name, price, category, origin } = food;
+    const { food_name, price, category, origin ,quantity } = food;
     const { user } = useContext(AuthContext);
     let newDate = new Date()
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
     let currentDate = (`${date}/${month}/${year}`)
-    console.log(currentDate);
+    // console.log(currentDate);
 
     // collect data from purchase form
     const hanldePurchase = e => {
@@ -42,8 +42,8 @@ const PurchasePage = () => {
                 console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
-                        title: "Congratulation !!",
-                        text: "Succesfully Craft Added",
+                        title: "Done",
+                        text: "Purchase Completed",
                         icon: "success"
                     });
                     form.reset();
@@ -64,44 +64,44 @@ const PurchasePage = () => {
                         {/* row 1 */}
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Iteam Name</label>
-                            <input name="purchase_iteam" value={food_name} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="purchase_iteam" defaultValue={food_name} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Purchasing Date</label>
-                            <input name="date" value={currentDate} readOnly type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="date" defaultValue={currentDate} readOnly type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
                         {/* row 2 */}
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Food Category</label>
-                            <input name="category" value={category} readOnly type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="category" defaultValue={category} readOnly type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
 
                         </div>
 
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 font-semibold">Food Quantity</label>
-                            <input name="quantity" type="number" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <label className="text-gray-700 dark:text-gray-200 font-semibold">Food Quantity <span className="text-sm text-red-500"> (max {quantity})</span></label>
+                            <input name="quantity" type="number" defaultValue={1} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
                         {/* row 3 */}
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Price</label>
-                            <input name="price" value={price} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="price" defaultValue={price} readOnly type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Food Origin(Country)</label>
-                            <input name="origin" value={origin} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="origin" defaultValue={origin} readOnly type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
                         {/* Row 4 */}
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Buyer Name</label>
-                            <input value={user?.displayName} name="buyer_name" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input defaultValue={user?.displayName} readOnly name="buyer_name" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Buyer Email</label>
-                            <input value={user?.email} readOnly name="email" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input defaultValue={user?.email} readOnly name="email" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
 
