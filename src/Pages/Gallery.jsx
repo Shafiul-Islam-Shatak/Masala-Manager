@@ -1,11 +1,35 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Gallery = () => {
     const { user } = useContext(AuthContext)
     const hanldeAddFeedBack = e => {
         e.preventDefault();
-        console.log('feedback posted');
+        const form = e.target;
+        const reviwer_name = user?.displayName
+        const reviwer_email = user?.email
+        const feedback = form.feedback.value;
+        const review = { reviwer_name, reviwer_email, feedback }
+        console.log(review);
+
+        // post data to backend
+        fetch(`${import.meta.env.VITE_API_URL}/feedbacks`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    toast.success('Feedback Done')
+                    form.reset();
+                }
+            })
     }
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/pre-prepared-food-showcasing-ready-eat-delicious-meals-go_23-2151431678.jpg?t=st=1715510852~exp=1715514452~hmac=43587f936343406381eac567bf4e46602240dc08774108600d4b7d07237a79a7&w=900)' }}>
@@ -37,7 +61,7 @@ const Gallery = () => {
 
                                     <div>
                                         <label className="text-gray-700 dark:text-gray-200" >Email Address</label>
-                                        <input name="" defaultValue={user?.email} readOnly type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                                        <input name="reviwer_email" defaultValue={user?.email} readOnly type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                                     </div>
 
                                     <div className="w-full">
@@ -45,16 +69,9 @@ const Gallery = () => {
                                         <textarea name="feedback" type="text" className="block w-[300px] md:w-[415px] px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                                     </div>
                                 </div>
-
-
-
+                                <button onClick={() => document.getElementById('my_modal_5').close()} type="submit" className="mt-8 w-full btn block px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
                             </form>
-                                <div className="modal-action">
-                                    <form  method="dialog">
-                                        {/* if there is a button in form, it will close the modal */}
-                                        <button type="submit" className="btn block px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
-                                    </form>
-                                </div>
+                            
                         </section>
 
                     </div>
