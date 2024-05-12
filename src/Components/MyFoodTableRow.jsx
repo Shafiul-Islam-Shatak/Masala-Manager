@@ -1,10 +1,46 @@
 import PropTypes from 'prop-types';
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
+import Swal from 'sweetalert2';
 
 
-const MyFoodTableRow = ({ myFood }) => {
-    const { image, food_name, price } = myFood
+const MyFoodTableRow = ({ myFood ,myNewfoods , setMyNewFoods }) => {
+    const { image, food_name, price, _id } = myFood;
+
+    const handleDelete = (_id) => {
+        console.log(_id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${import.meta.env.VITE_API_URL}/my-foods/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            console.log(myNewfoods);
+                            const remain = myNewfoods.filter(art => art._id !== _id)
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Craft has been deleted.",
+                                icon: "success"
+                            });
+                            setMyNewFoods(remain)
+
+                        }
+                    })
+            }
+        });
+
+    }
     return (
         <tr>
             <td>
@@ -22,19 +58,21 @@ const MyFoodTableRow = ({ myFood }) => {
             <td>{price}</td>
             <td>
                 <button>
-                <CiEdit className='h-6 w-6'></CiEdit>
+                    <CiEdit className='h-6 w-6'></CiEdit>
                 </button>
             </td>
             <td>
-                <button>
-                <MdDeleteForever  className='h-6 w-6'></MdDeleteForever>
+                <button onClick={() => handleDelete(_id)}>
+                    <MdDeleteForever className='h-6 w-6'></MdDeleteForever>
                 </button>
             </td>
         </tr>
     );
 };
 MyFoodTableRow.propTypes = {
-    myFood: PropTypes.object.isRequired
+    myFood: PropTypes.object.isRequired,
+    myNewfoods :PropTypes.array.isRequired,
+    setMyNewFoods :PropTypes.array.isRequired
 }
 
 export default MyFoodTableRow;

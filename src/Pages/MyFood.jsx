@@ -1,9 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import MyFoodTableRow from "../Components/MyFoodTableRow";
+import { useState } from "react";
 
 const MyFood = () => {
     const myFoods = useLoaderData();
     console.log(myFoods);
+    const [myNewfoods , setMyNewFoods] = useState(myFoods)
+    console.log(myNewfoods);
+
+
 
     return (
         <div className="w-3/4 mx-auto">
@@ -21,9 +26,11 @@ const MyFood = () => {
                     </thead>
                     <tbody>
                      {
-                        myFoods.map(myFood => <MyFoodTableRow
+                        myNewfoods.map(myFood => <MyFoodTableRow
                         key={myFood._id}
                         myFood ={myFood}
+                        myNewfoods = {myNewfoods}
+                        setMyNewFoods = {setMyNewFoods}
                         ></MyFoodTableRow>)
                      }
                     </tbody>
