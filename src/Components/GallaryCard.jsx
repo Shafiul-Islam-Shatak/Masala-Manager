@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const GallaryCard = ({feedbackss}) => {
     const {reviwer_name, review_iamge, feedback} = feedbackss;
     return (
@@ -17,5 +19,9 @@ const GallaryCard = ({feedbackss}) => {
         </div>
     );
 };
+
+GallaryCard.propTypes = {
+    feedbackss: PropTypes.object.isRequired
+}
 
 export default GallaryCard;

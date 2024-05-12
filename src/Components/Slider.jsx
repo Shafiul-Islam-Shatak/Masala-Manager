@@ -25,8 +25,8 @@ const Slider = ({ image, text }) => {
     );
 };
 Slider.propTypes = {
-    image: PropTypes.object.isRequired,
-    text: PropTypes.object.isRequired
+    image: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
 }
 
 export default Slider;

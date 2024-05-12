@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 
 const Navber = () => {
+    const navigate = useNavigate()
     const navlinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/all-foods'>All Foods</Link></li>
@@ -18,6 +19,7 @@ const Navber = () => {
         logOut()
             .then(() => {
                 toast.success("Log Out succesfull !");
+                navigate('/login')
             })
             .catch()
     }
@@ -50,7 +52,7 @@ const Navber = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52 absolute -translate-x-40 ">
                             <li><Link>Update Profile</Link></li>
-                            <li><Link>My Food</Link></li>
+                            <li><Link to={`/my-foods/${user.email}`}>My Food</Link></li>
                             <li><Link to='/add-food'>Add a Food</Link></li>
                             <li><h1 onClick={handleLogOut} className="font-bold">Log Out</h1></li>
                         </ul>
