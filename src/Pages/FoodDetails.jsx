@@ -1,8 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const FoodDetails = () => {
     const food = useLoaderData()
-    const { food_name, image, userName, userEmail, description, price, category, quantity, origin } = food;
+    const { food_name, image, userName, userEmail, description, price, category, quantity, origin, _id } = food;
 
 
     return (
@@ -26,13 +26,15 @@ const FoodDetails = () => {
                         </p>
                         <p className="text-sm  uppercase mt-5 font-semibold">category : {category}</p>
                         <p className="text-sm  uppercase mt-2 font-semibold">origin : {origin}</p>
-                        <h1 className="text-sm text-gray-700 dark:text-gray-200 mt-5">Iteam Author : {userName}</h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Author Contact : {userEmail}</p>
-                        <button className="btn btn-block  hover:bg-orange-600 bg-orange-300 text-black mt-5">Order Now</button>
+                        <h1 className="text-sm text-gray-700 dark:text-gray-200 mt-5">Made By : {userName}</h1>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Contact : {userEmail}</p>
+                        <Link to={`/purchase/${_id}`}>
+                            <button className="btn btn-block  hover:bg-orange-600 bg-orange-300 text-black mt-5">Purchase</button>
+                        </Link>
 
                     </div>
                 </div>
-                
+
             </div>
         </section>
 
