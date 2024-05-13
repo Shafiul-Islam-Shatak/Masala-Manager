@@ -7,17 +7,19 @@ import { IoEyeOffSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
 // import { toast } from "react-toastify";
 import toast from 'react-hot-toast';
+import axios from 'axios'
+
 
 
 const Registration = () => {
     const [showPassword, setShowPassword] = useState([]);
-    
+
 
     const location = useLocation();
     const navigate = useNavigate();
 
     // setRegError('')
-    const { createUser, updateUserProfile , user, setUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
     const handleRegister = async e => {
         setShowPassword('')
         e.preventDefault();
@@ -30,7 +32,7 @@ const Registration = () => {
             toast.error("Your password should at lest 6")
         }
         else if (!/[A-Z]/.test(password)) {
-            toast.error("Your password must have an uppercase")            
+            toast.error("Your password must have an uppercase")
         }
         else if (!/[a-z]/.test(password)) {
             toast.error("Your password must have a lowercase")
@@ -39,11 +41,15 @@ const Registration = () => {
         else {
 
             // creating a user 
-           await createUser(email, password)
-                .then(()  => { 
-                    updateUserProfile(full_name, photo).then(() => {
+            const result = await createUser(email, password)
+                .then(() => {
+                    updateUserProfile(full_name, photo).then(async () => {
                         navigate(location?.state ? location.state : '/');
-                        setUser({...user, photoURL :photo , displayName : full_name})
+                        setUser({ ...result?.user, photoURL: photo, displayName: full_name })
+                        const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,
+                            { email: result?.user?.email },
+                            { withCredentials: true })
+                        console.log(data);
                     })
                     Swal.fire("Register Success !!")
 
@@ -57,7 +63,7 @@ const Registration = () => {
     }
     return (
 
-       
+
         <div className="hero min-h-screen " style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/flame-grilled-meat-cooking-flames-generative-ai_188544-12355.jpg?t=st=1715408843~exp=1715412443~hmac=865111b7398cdfba6bf28dc02bf5a06cd0f982a5410efbbe40c02b36414393c7&w=1060)' }}>
             <Helmet>
                 <title>
@@ -93,15 +99,15 @@ const Registration = () => {
                                         <input type={showPassword ? 'password' : 'text'} name="password" placeholder="password" className="input input-bordered text-black w-full" required />
                                         {
                                             showPassword ?
-                                                <IoEyeOffSharp  onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></IoEyeOffSharp> :
-                                                <FaEye  onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></FaEye>
+                                                <IoEyeOffSharp onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></IoEyeOffSharp> :
+                                                <FaEye onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></FaEye>
                                         }
                                     </div>
 
                                     <label className="label">
                                         <p className="text-black">Already have a account?<Link to='/login' className="text-blue-800 font-semibold">Log in here</Link></p>
                                     </label>
-                                    
+
                                 </div>
                                 <div className="form-control mt-6">
                                     <button type="submit" className="btn btn-primary">Register</button>

@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import { GoogleAuthProvider } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 import { TwitterAuthProvider } from "firebase/auth";
+import axios from 'axios'
+
 
 
 
@@ -46,8 +48,11 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, twitterProvider)
     }
 
-    const logOut = () => {
+    const logOut =async () => {
         setLoading(true);
+        await axios.get(`${import.meta.env.VITE_API_URL}/logout` , {
+            withCredentials: true
+        })
         return signOut(auth);
     }
     // onAtuh setup

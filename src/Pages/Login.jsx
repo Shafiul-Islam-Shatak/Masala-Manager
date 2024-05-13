@@ -7,6 +7,7 @@ import { IoEyeOffSharp } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import axios from 'axios'
 
 
 
@@ -15,6 +16,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState([])
     const location = useLocation();
     const navigate = useNavigate();
+
     const handleLogIn = e => {
         setShowPassword('')
         e.preventDefault();
@@ -22,10 +24,14 @@ const Login = () => {
         const email = form.get('email');
         const password = form.get('password')
         logIn(email, password)
-            .then(result => {
+            .then(async(result) => {
                 console.log(result.user);
                 toast.success("Log in succesfull !");
                 navigate(location?.state ? location.state : '/');
+                const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, 
+                { email: result?.user?.email },
+                { withCredentials : true})
+                console.log(data);
             })
             .catch(error => {
                 console.log(error);
@@ -33,7 +39,12 @@ const Login = () => {
             })
     }
     const handleSocialLogIn = (socialProvider) => {
-        socialProvider().then((result) => {
+         socialProvider().then(async (result) => {
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, 
+            { email: result?.user?.email },
+            { withCredentials : true})
+            console.log(data);
+            // console.log(result);
             toast.success("Log in succesfull !");
             if (result.user) {
                 navigate(location?.state ? location.state : '/')
