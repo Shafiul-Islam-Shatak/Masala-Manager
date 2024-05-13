@@ -53,6 +53,7 @@ const Navber = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52 absolute -translate-x-40 ">
                             <li><Link>Update Profile</Link></li>
                             <li><Link to={`/my-foods/${user.email}`}>My Food</Link></li>
+                            <li><Link to={`/my-purchases/${user.email}`}>My Order List</Link></li>
                             <li><Link to='/add-food'>Add a Food</Link></li>
                             <li><h1 onClick={handleLogOut} className="font-bold">Log Out</h1></li>
                         </ul>

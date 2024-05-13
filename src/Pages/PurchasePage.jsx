@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const PurchasePage = () => {
     const food = useLoaderData()
-    const { food_name, price, category, origin ,quantity } = food;
+    const { food_name, price, category, origin, quantity, image, userName } = food;
     const { user } = useContext(AuthContext);
     let newDate = new Date()
     let date = newDate.getDate();
@@ -25,7 +25,11 @@ const PurchasePage = () => {
         const quantity = form.quantity.value;
         const total_pirce = iteam_price * quantity
         const origin = form.origin.value;
-        const purchasedFood = { purchase_iteam, purchase_date, category, iteam_price, total_pirce, quantity, origin }
+        const buyer_name = form.buyer_name.value;
+        const buyer_email = form.buyer_email.value;
+        const owner_name = userName;
+        const food_photo = image;
+        const purchasedFood = { purchase_iteam, purchase_date, category, iteam_price, total_pirce, quantity, origin, buyer_name, buyer_email, owner_name , food_photo }
 
 
         // post data to backend
@@ -101,7 +105,7 @@ const PurchasePage = () => {
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 font-semibold">Buyer Email</label>
-                            <input defaultValue={user?.email} readOnly name="email" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input defaultValue={user?.email} readOnly name="buyer_email" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
 
@@ -109,7 +113,9 @@ const PurchasePage = () => {
                     </div>
 
                     <div className="flex justify-end mt-6">
-                        <input type="submit" value="Confirm Purchase" className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" />
+                        <button type="submit"  className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                            Confirm Purchase
+                        </button>
 
                     </div>
                 </form>
