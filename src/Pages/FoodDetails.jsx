@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const FoodDetails = () => {
     const food = useLoaderData()
-    const { food_name, image, userName, userEmail, description, price, category, quantity, origin, _id } = food;
+    const { food_name, image, userName, userEmail, description, price, category, stock_quantity, origin, _id , owner_image , sale_quantity} = food;
 
 
     return (
@@ -19,15 +19,26 @@ const FoodDetails = () => {
                         <p className="block mt-4 text-2xl font-semibold text-gray-800 dark:text-white">
                             Price : ${price}
                         </p>
-                        <p href="#" className="inline-block mt-2 font-semibold">Available : Only {quantity} Pcs</p>
+                        <p className="inline-block mt-2 font-semibold">Available : Only {stock_quantity} Pcs</p>
 
                         <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
                             Details : {description}
                         </p>
                         <p className="text-sm  uppercase mt-5 font-semibold">category : {category}</p>
                         <p className="text-sm  uppercase mt-2 font-semibold">origin : {origin}</p>
-                        <h1 className="text-sm text-gray-700 dark:text-gray-200 mt-5">Made By : {userName}</h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Contact : {userEmail}</p>
+                        <p className="inline-block uppercase mt-2 font-semibold">This iteam already sold {sale_quantity} Pcs</p>
+                        <div className="flex my-10 items-center space-x-3">
+                            <div>
+                                <div className="w-16 mask mask-squircle">
+                                    <img src={owner_image} />
+                                </div>
+                            </div>
+
+                            <div>
+                                <h1 className="text-sm text-gray-700 dark:text-gray-200 mt-5">Made By : {userName}</h1>
+                                <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Contact : {userEmail}</p>
+                            </div>
+                        </div>
                         <Link to={`/purchase/${_id}`}>
                             <button className="btn btn-block  hover:bg-orange-600 bg-orange-300 text-black mt-5">Purchase</button>
                         </Link>

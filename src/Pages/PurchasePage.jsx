@@ -21,16 +21,15 @@ const PurchasePage = () => {
         const purchase_iteam = form.purchase_iteam.value;
         const purchase_date = form.date.value;
         const category = form.category.value;
-        const iteam_price = form.price.value;
-        const quantity = form.quantity.value;
-        const total_pirce = iteam_price * quantity
+        const iteam_price = parseInt(form.price.value);
+        const order_quantity = parseInt(form.order_quantity.value);
+        const total_pirce = iteam_price * order_quantity
         const origin = form.origin.value;
         const buyer_name = form.buyer_name.value;
         const buyer_email = form.buyer_email.value;
         const owner_name = userName;
         const food_photo = image;
-        const purchasedFood = { purchase_iteam, purchase_date, category, iteam_price, total_pirce, quantity, origin, buyer_name, buyer_email, owner_name , food_photo }
-
+        const purchasedFood = { purchase_iteam, purchase_date, category, iteam_price, total_pirce, order_quantity, origin, buyer_name, buyer_email, owner_name, food_photo };
 
         // post data to backend
         fetch(`${import.meta.env.VITE_API_URL}/purchases`, {
@@ -53,6 +52,7 @@ const PurchasePage = () => {
                     form.reset();
                 }
             })
+
     }
 
 
@@ -83,8 +83,8 @@ const PurchasePage = () => {
                         </div>
 
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 font-semibold">Food Quantity <span className="text-sm text-red-500"> (max {quantity})</span></label>
-                            <input name="quantity" type="number" defaultValue={1} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <label className="text-gray-700 dark:text-gray-200 font-semibold">Order Quantity <span className="text-sm text-red-500"> (max {quantity})</span></label>
+                            <input name="order_quantity" type="number" defaultValue={1} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
                         {/* row 3 */}
                         <div>
@@ -113,7 +113,7 @@ const PurchasePage = () => {
                     </div>
 
                     <div className="flex justify-end mt-6">
-                        <button type="submit"  className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        <button type="submit" className="px-8 w-full py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
                             Confirm Purchase
                         </button>
 
