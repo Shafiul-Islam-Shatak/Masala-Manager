@@ -4,7 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 // import { toast } from "react-toastify";
 import toast from 'react-hot-toast';
 import axios from 'axios'
@@ -51,7 +51,7 @@ const Registration = () => {
                             { withCredentials: true })
                         console.log(data);
                     })
-                    Swal.fire("Register Success !!")
+                    toast.success("Register Success !!")
 
                 })
                 .catch(error => {

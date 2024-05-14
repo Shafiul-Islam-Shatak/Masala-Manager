@@ -4,8 +4,10 @@ import { MdDeleteForever } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const MyOrderListRow = ({myNewOrderList,setMyNewOrderList, myOrder}) => {
-    const { food_photo, purchase_iteam, iteam_price, _id , purchase_date , owner_name } = myOrder;
+const MyOrderListRow = ({ myNewOrderList, setMyNewOrderList, myOrder }) => {
+    const { food_photo, purchase_iteam, iteam_price, _id, purchase_date, owner_name,
+        order_quantity, total_pirce
+    } = myOrder;
 
     const handleDelete = (_id) => {
         Swal.fire({
@@ -43,35 +45,35 @@ const MyOrderListRow = ({myNewOrderList,setMyNewOrderList, myOrder}) => {
 
     return (
         <tr>
-        <td>
-            <div className="flex items-center gap-3">
-                <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                        <img src={food_photo} alt="Avatar Tailwind CSS Component" />
+            <td>
+                <div className="flex items-center gap-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                            <img src={food_photo} alt="Avatar Tailwind CSS Component" />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </td>
-        <td>
-            {purchase_iteam}
-        </td>
-        <td>{iteam_price}</td>
-        <td>{purchase_date}</td>
-        <td>{owner_name}</td>
-        <td>
-            <Link to={`/update/${_id}`}>
-                <button >
-                    <CiEdit className='h-6 w-6'></CiEdit>
+            </td>
+            <td>{purchase_iteam}</td>
+            <td>{iteam_price}</td>
+            <td>{order_quantity}</td>
+            <td>{total_pirce}</td>
+            <td>{purchase_date}</td>
+            <td>{owner_name}</td>
+            <td>
+                <Link to={`/update/${_id}`}>
+                    <button >
+                        <CiEdit className='h-6 w-6'></CiEdit>
+                    </button>
+                </Link>
+            </td>
+            <td>
+                <button onClick={() => handleDelete(_id)}>
+                    <MdDeleteForever className='h-6 w-6'></MdDeleteForever>
                 </button>
-            </Link>
-        </td>
-        <td>
-            <button onClick={() => handleDelete(_id)}>
-                <MdDeleteForever className='h-6 w-6'></MdDeleteForever>
-            </button>
-        </td>
+            </td>
 
-    </tr>
+        </tr>
     );
 };
 MyOrderListRow.propTypes = {

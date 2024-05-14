@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import axios from 'axios'
 import GallaryCard from "../Components/GallaryCard";
 import { Helmet } from "react-helmet-async";
+import { ScrollRestoration } from "react-router-dom";
 
 const Gallery = () => {
     const [feedbacks, setFeedbacks] = useState([])
@@ -55,6 +56,7 @@ const Gallery = () => {
                     Masala Manager | Gallery
                 </title>
             </Helmet>
+            <ScrollRestoration></ScrollRestoration>
             <div className="hero-overlay bg-opacity-60" > </div>
             <div className="w-3/4">
                 <div className="bg-transparent">

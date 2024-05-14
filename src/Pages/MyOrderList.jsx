@@ -21,6 +21,8 @@ const MyOrderList = () => {
                             <th>Image</th>
                             <th>Food Name</th>
                             <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
                             <th>Order Date</th>
                             <th>Owner Name</th>
                             <th>Edit</th>

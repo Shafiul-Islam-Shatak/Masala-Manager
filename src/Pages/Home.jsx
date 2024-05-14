@@ -2,6 +2,7 @@ import Banner from "../Components/Banner";
 import { Helmet } from "react-helmet-async";
 import TopSales from "../Components/TopSales";
 import ComeResturent from "../Components/ComeResturent";
+import { ScrollRestoration } from "react-router-dom";
 const Home = () => {
     return (
         <div>
@@ -10,6 +11,7 @@ const Home = () => {
                     Masala Manager | Home
                 </title>
             </Helmet>
+            <ScrollRestoration></ScrollRestoration>
             <Banner></Banner>
             <div>
                 <ComeResturent></ComeResturent>
