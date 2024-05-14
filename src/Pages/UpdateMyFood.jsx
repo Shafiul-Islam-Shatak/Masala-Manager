@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const UpdateMyFood = () => {
@@ -52,6 +53,11 @@ const UpdateMyFood = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>
+                    Masala Manager | Update
+                </title>
+            </Helmet>
             <section className="w-3/4 mx-auto ">
                 <h2 className="text-[#B18B5E] font-bold text-3xl md:text-5xl  text-center mb-10 mt-10 w-3/4 mx-auto">Update : {food_name}</h2>
 

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 
 
 const AddFood = () => {
@@ -47,6 +48,11 @@ const AddFood = () => {
     }
     return (
         <div>
+             <Helmet>
+                <title>
+                    Masala Manager | Add Food
+                </title>
+            </Helmet>
             <section className="w-3/4 mx-auto ">
                 <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">Add a Delicious Food</h2>
 

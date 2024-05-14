@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import MyFoodTableRow from "../Components/MyFoodTableRow";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const MyFood = () => {
     const myFoods = useLoaderData();
@@ -8,6 +9,11 @@ const MyFood = () => {
 
     return (
         <div className="w-3/4 mx-auto">
+             <Helmet>
+                <title>
+                    Masala Manager | My Food
+                </title>
+            </Helmet>
             <div className="">
                 <table className="table">
                     {/* head */}

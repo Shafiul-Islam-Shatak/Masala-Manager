@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import MyOrderListRow from "../Components/MyOrderListRow";
+import { Helmet } from "react-helmet-async";
 
 const MyOrderList = () => {
     const myOrder = useLoaderData()
     const [myNewOrderList, setMyNewOrderList] = useState(myOrder)
     return (
         <div className="w-3/4 mx-auto">
+             <Helmet>
+                <title>
+                    Masala Manager | Orders
+                </title>
+            </Helmet>
             <div className="">
                 <table className="table">
                     {/* head */}

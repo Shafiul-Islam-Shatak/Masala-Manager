@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
 const FoodDetails = () => {
@@ -7,6 +8,11 @@ const FoodDetails = () => {
 
     return (
         <section className="bg-white dark:bg-gray-900">
+             <Helmet>
+                <title>
+                    Masala Manager | Food Details
+                </title>
+            </Helmet>
             <div className="container px-6 py-10 mx-auto">
                 <h2 className=" font-bold text-3xl md:text-5xl  text-center mb-10 mt-10 w-3/4 mx-auto">{food_name}</h2>
 

@@ -24,7 +24,7 @@ const Navber = () => {
             .catch()
     }
     return (
-        <div className="navbar bg-transparent float-start">
+        <div className="navbar bg-transparent ">
             <Tooltip id="profile" />
             <div className="navbar-start">
                 <div className="dropdown z-20">

@@ -12,7 +12,7 @@ const Slider = ({ image, text }) => {
         >
             <div className='flex items-center justify-center w-full h-full bg-gray-900/70 rounded-2xl'>
                 <div className='text-center'>
-                    <h1 className='text-2xl font-semibold text-gray-300 lg:text-2xl mx-auto w-3/4'>
+                    <h1 className='animate__animated animate__fadeInDown text-2xl font-semibold text-gray-300 lg:text-2xl mx-auto w-3/4'>
                         {text}
                     </h1>
                     <br />

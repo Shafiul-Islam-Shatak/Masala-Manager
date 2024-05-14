@@ -1,6 +1,7 @@
 import FoodCard from "../Components/FoodCard";
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import { Helmet } from "react-helmet-async";
 
 const AllFoods = () => {
    
@@ -16,6 +17,11 @@ const AllFoods = () => {
      
     return (
         <div>
+             <Helmet>
+                <title>
+                    Masala Manager | All Food
+                </title>
+            </Helmet>
             <div>
                 <div data-aos="fade-up">
                     <h2 className="text-[#B18B5E] font-bold text-3xl md:text-5xl  text-center mb-10  w-3/4 mx-auto">Indulge in Flavorful Journeys, Every Bite Tells a Story!</h2>

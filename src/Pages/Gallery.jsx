@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from 'axios'
 import GallaryCard from "../Components/GallaryCard";
+import { Helmet } from "react-helmet-async";
 
 const Gallery = () => {
     const [feedbacks, setFeedbacks] = useState([])
@@ -49,6 +50,11 @@ const Gallery = () => {
     console.log(feedbacks);
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/pre-prepared-food-showcasing-ready-eat-delicious-meals-go_23-2151431678.jpg?t=st=1715510852~exp=1715514452~hmac=43587f936343406381eac567bf4e46602240dc08774108600d4b7d07237a79a7&w=900)' }}>
+             <Helmet>
+                <title>
+                    Masala Manager | Gallery
+                </title>
+            </Helmet>
             <div className="hero-overlay bg-opacity-60" > </div>
             <div className="w-3/4">
                 <div className="bg-transparent">
