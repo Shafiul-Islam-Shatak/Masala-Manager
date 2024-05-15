@@ -10,14 +10,14 @@ const ComeResturent = () => {
                     <RectangleImage></RectangleImage>
                 </div>
                 <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-                    <h1 className="text-5xl font-bold leading-none sm:text-6xl">
+                    <h1 className="text-3xl md:text-5xl font-bold leading-none sm:text-6xl">
                     Come to Our Restaurant, Ready Your Food.
                     </h1>
                     <p className="mt-6 mb-8 text-lg sm:mb-12">
                        Explore Us , Find Your Self In Our Gallery
                     </p>
                     <Link to='/gallery' className='w-full px-5 py-4 mt-4 text-sm  font-medium '>
-                    <button className="btn btn-outline hover:bg-orange-600 btn-orange-300 text-orange-300 ">Explore Us</button>
+                    <button className="btn border-none bg-orange-400 hover:bg-orange-300 text-black ">Explore Us</button>
                     </Link>
                     
                 </div>

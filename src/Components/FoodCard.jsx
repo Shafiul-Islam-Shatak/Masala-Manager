@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const FoodCard = ({food}) => {
-    const {food_name, image , _id, description, price, category}= food;
+    const {food_name, image , _id,  price, category, stock_quantity}= food;
     return (
         <div>
             <Helmet>
@@ -18,7 +18,7 @@ const FoodCard = ({food}) => {
                 </figure>
                 <div className="card-body  ">
                     <h2 className="card-title">{food_name}</h2>
-                    <p title={description}>{description.substring(0,70)}....</p>
+                    <p >In Stock : {stock_quantity}</p>
                     <div>
                       <h2>Price : $ {price}</h2> 
                       <h2>Category : {category}</h2> 

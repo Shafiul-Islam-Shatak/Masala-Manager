@@ -12,7 +12,7 @@ const TopFoodCard = ({ topFood }) => {
                 <p className="mt-1  text-xl font-bold text-gray-600 dark:text-gray-400">$ {price}</p>
             </div>
 
-            <img className="object-cover w-full h-48 mt-2" src={image} alt={food_name} />
+            <img className="object-cover w-full max-h-44 mt-2" src={image} alt={food_name} />
 
             <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
                 <h1 className="text-lg font-bold text-white">Alredy {sale_quantity} Sold</h1>

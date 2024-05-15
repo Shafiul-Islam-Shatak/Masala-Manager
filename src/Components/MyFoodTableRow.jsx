@@ -34,7 +34,7 @@ const MyFoodTableRow = ({ myFood, myNewfoods, setMyNewFoods }) => {
                             const remain = myNewfoods.filter(art => art._id !== _id)
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your Craft has been deleted.",
+                                text: "Your Food has been deleted.",
                                 icon: "success"
                             });
                             setMyNewFoods(remain)

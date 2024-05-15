@@ -30,7 +30,7 @@ const PurchasePage = () => {
         const buyer_email = form.buyer_email.value;
         const owner_name = userName;
         const food_photo = image;
-        const purchasedFood = {purchase_iteam, purchase_date, category, iteam_price, total_pirce, order_quantity, origin, buyer_name, buyer_email, owner_name, food_photo };
+        const purchasedFood = { purchase_iteam, purchase_date, category, iteam_price, total_pirce, order_quantity, origin, buyer_name, buyer_email, owner_name, food_photo };
 
         // post data to backend
         fetch(`${import.meta.env.VITE_API_URL}/purchases`, {
@@ -61,7 +61,7 @@ const PurchasePage = () => {
 
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>
                     Masala Manager | Purchase
                 </title>

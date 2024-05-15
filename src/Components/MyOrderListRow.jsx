@@ -31,7 +31,7 @@ const MyOrderListRow = ({ myNewOrderList, setMyNewOrderList, myOrder }) => {
                             const remain = myNewOrderList.filter(art => art._id !== _id)
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your Craft has been deleted.",
+                                text: "Your Order has been deleted.",
                                 icon: "success"
                             });
                             setMyNewOrderList(remain)
