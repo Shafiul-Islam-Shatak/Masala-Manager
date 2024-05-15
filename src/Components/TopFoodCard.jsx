@@ -6,7 +6,7 @@ const TopFoodCard = ({ topFood }) => {
     const { food_name, image, _id, price, sale_quantity } = topFood;
 
     return (
-        <div className="card w-80 mx-auto md:w-96 h-[330px] lg:hover:scale-105 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div data-aos="zoom-in" className="card w-80 mx-auto md:w-96 h-[330px] lg:hover:scale-105 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <div className="px-4 py-2">
                 <h1 className="text-xl font-bold text-gray-800 uppercase dark:text-white">{food_name}</h1>
                 <p className="mt-1  text-xl font-bold text-gray-600 dark:text-gray-400">$ {price}</p>
