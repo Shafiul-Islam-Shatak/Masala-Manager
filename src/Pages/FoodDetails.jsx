@@ -3,12 +3,12 @@ import { Link, ScrollRestoration, useLoaderData } from "react-router-dom";
 
 const FoodDetails = () => {
     const food = useLoaderData()
-    const { food_name, image, userName, userEmail, description, price, category, stock_quantity, origin, _id , owner_image , sale_quantity} = food;
+    const { food_name, image, userName, userEmail, description, price, category, stock_quantity, origin, _id, owner_image, sale_quantity } = food;
 
 
     return (
         <section className="bg-white dark:bg-gray-900">
-             <Helmet>
+            <Helmet>
                 <title>
                     Masala Manager | Food Details
                 </title>
@@ -46,8 +46,10 @@ const FoodDetails = () => {
                                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Contact : {userEmail}</p>
                             </div>
                         </div>
+                        <h2 className={stock_quantity === 0 ? 'text-red-500' : 'hidden'} >This item is Out of Stock</h2>
                         <Link to={`/purchase/${_id}`}>
-                            <button className="btn btn-block  hover:bg-orange-600 bg-orange-300 text-black mt-5">Purchase</button>
+                            <button disabled={stock_quantity === 0}
+                                className="btn btn-block  hover:bg-orange-600 bg-orange-300 text-black mt-5">Purchase</button>
                         </Link>
 
                     </div>

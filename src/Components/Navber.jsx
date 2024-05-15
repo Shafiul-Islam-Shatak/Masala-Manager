@@ -35,7 +35,7 @@ const Navber = () => {
                         {navlinks}
                     </ul>
                 </div>
-                <Link to='/'><img className="w-24 md:w-32 " src="../../resources/logo.png" alt="logo" /></Link>
+                <Link to='/'><img className="w-24 md:w-32 " src="https://i.ibb.co/2PQG985/logo.png" alt="logo" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 space-x-5">

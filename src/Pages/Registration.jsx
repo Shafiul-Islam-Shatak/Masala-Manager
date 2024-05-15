@@ -19,9 +19,9 @@ const Registration = () => {
     const navigate = useNavigate();
 
     // setRegError('')
-    const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setUser} = useContext(AuthContext);
     const handleRegister = async e => {
-        setShowPassword('')
+        // setShowPassword('')
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const full_name = form.get('name');
@@ -37,7 +37,7 @@ const Registration = () => {
         else if (!/[a-z]/.test(password)) {
             toast.error("Your password must have a lowercase")
         }
-
+        
         else {
 
             // creating a user 
@@ -50,14 +50,14 @@ const Registration = () => {
                             { email: result?.user?.email },
                             { withCredentials: true })
                         console.log(data);
+                        toast.success("Register Success !!")
                     })
-                    toast.success("Register Success !!")
-
+                    
                 })
                 .catch(error => {
                     console.error(error)
                 })
-        }
+            }
 
 
     }

@@ -1,19 +1,21 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 const PurchasePage = () => {
     const food = useLoaderData()
-    const { food_name, price, category, origin, quantity, image, userName } = food;
+    const navigate = useNavigate()
+    const { food_name, price, category, origin, quantity, image, userName , stock_quantity , userEmail} = food;
     const { user } = useContext(AuthContext);
     let newDate = new Date()
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
     let currentDate = (`${date}/${month}/${year}`)
-    // console.log(currentDate);
+    console.log(stock_quantity);
 
     // collect data from purchase form
     const hanldePurchase = e => {
@@ -31,28 +33,38 @@ const PurchasePage = () => {
         const owner_name = userName;
         const food_photo = image;
         const purchasedFood = { purchase_iteam, purchase_date, category, iteam_price, total_pirce, order_quantity, origin, buyer_name, buyer_email, owner_name, food_photo };
+        if(order_quantity > stock_quantity){
+            toast.error(`You can't buy more than ${stock_quantity}`)
+        }
+        else if(buyer_email === userEmail){
+            toast.error('You are the owner, You cannot but this iteam. Please buy another one')
+            navigate(`/all-foods`)
+        }
+        else{
 
-        // post data to backend
-        fetch(`${import.meta.env.VITE_API_URL}/purchases`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(purchasedFood)
-
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.result) {
-                    Swal.fire({
-                        title: "Done",
-                        text: "Purchase Completed",
-                        icon: "success"
-                    });
-                    form.reset();
-                }
+            // post data to backend
+            fetch(`${import.meta.env.VITE_API_URL}/purchases`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(purchasedFood)
+    
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.result) {
+                        Swal.fire({
+                            title: "Done",
+                            text: "Purchase Completed",
+                            icon: "success"
+                        });
+                        form.reset();
+                    }
+                })
+        }
+
 
     }
 

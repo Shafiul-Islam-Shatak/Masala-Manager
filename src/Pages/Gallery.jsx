@@ -4,11 +4,12 @@ import toast from "react-hot-toast";
 import axios from 'axios'
 import GallaryCard from "../Components/GallaryCard";
 import { Helmet } from "react-helmet-async";
-import { ScrollRestoration } from "react-router-dom";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
 
 const Gallery = () => {
     const [feedbacks, setFeedbacks] = useState([])
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
     const hanldeAddFeedBack = e => {
         e.preventDefault();
         const form = e.target;
@@ -65,7 +66,7 @@ const Gallery = () => {
                         <div>
                             <h1 className="text-5xl text-white font-bold">Our Honorable Clients Feedback</h1>
                             <p className="py-6 text-white">Dive into the feedback from our esteemed clients, showcasing their valuable testimonials and insights. Discover how our products and services have made a positive impact on their experiences. Join us in celebrating their satisfaction and loyalty as we continue to strive for excellence.</p>
-                            <button onClick={() => document.getElementById('my_modal_5').showModal()} className="btn mt-10 hover:bg-orange-600 bg-orange-300 text-black w-1/2">Add Your Feedback</button>
+                            <button onClick={() => user? document.getElementById('my_modal_5').showModal() : navigate('/login') } className="btn mt-10 hover:bg-orange-600 bg-orange-300 text-black w-1/2">Add Your Feedback</button>
                         </div>
                     </div>
                 </div>
