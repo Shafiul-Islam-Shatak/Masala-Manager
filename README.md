@@ -8,4 +8,10 @@ Feature :
  4. You can post on our gallery 
  5. User can't buy his own food
  6. User can't buy more than stock quantity
+
+After Clone :
+1. install npm
+2. have to provide some keys. in .evn.local 
+3. Please provide Firebase authentication key
+4. install others dependencies. you can find them from package.json file
  
