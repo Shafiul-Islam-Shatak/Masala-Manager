@@ -60,7 +60,7 @@ const AllFoods = () => {
 
 
 
-            <div className="w-3/4 mx-auto grid grid-cols-1  lg:grid-cols-3 gap-5">
+            <div className="w-3/4 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5">
                 {
                     foods.map(food =>
                         <FoodCard
