@@ -24,9 +24,9 @@ const TopSales = () => {
                 </div>
             </div>
 
-            <div className="w-3/4 mx-auto grid grid-cols-1 my-10 lg:grid-cols-3 gap-5">
+            <div className="max-w-[1440px]  mx-auto grid grid-cols-1 md:grid-cols-2 my-10 lg:grid-cols-3 gap-5">
                 {
-                    topFoods.slice(0,6).map(topFood=><TopFoodCard
+                    topFoods?.slice(0,6)?.map(topFood=><TopFoodCard
                     topFood={topFood}
                     key={topFood._id}
                     ></TopFoodCard>)
