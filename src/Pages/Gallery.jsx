@@ -59,7 +59,7 @@ const Gallery = () => {
             </Helmet>
             <ScrollRestoration></ScrollRestoration>
             <div className="hero-overlay bg-opacity-60" > </div>
-            <div className="w-3/4">
+            <div className="w-3/4 max-w-[1440px]">
                 <div className="bg-transparent">
                     <div className="hero-content flex-col lg:flex-row">
                         <img  src="https://img.freepik.com/free-photo/full-shot-smiley-woman-with-smartphone_23-2149394418.jpg?t=st=1715531639~exp=1715535239~hmac=3a09e972d102a14ea20b0f0a4ce1dd01cbd2d1a59fa40fd2b1d6194592868ca7&w=900" className="w-80 md:w-96 rounded-lg shadow-2xl" />
@@ -72,7 +72,7 @@ const Gallery = () => {
                 </div>
                 <h2 className="text-white font-bold text-3xl md:text-5xl  text-center mb-10 mt-10 w-3/4 mx-auto">Take a Look about Ourself</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {
                         feedbacks.map(feedback =>
                             <GallaryCard

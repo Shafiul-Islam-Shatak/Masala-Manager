@@ -16,7 +16,7 @@ const Banner = () => {
 
         <div className=''>
 
-            <div className="mx-auto ">
+            <div className="mx-auto max-w-[1920px] ">
                 <Swiper className='w-3/4 mx-auto z-10 relative  '
                     modules={[Navigation, Pagination, Scrollbar, Autoplay]}
                     spaceBetween={50}

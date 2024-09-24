@@ -3,7 +3,7 @@ import RectangleImage from "./RectangleImage";
 
 const ComeResturent = () => {
     return (
-        <section className="dark:bg-gray-100 dark:text-gray-800 w-3/4
+        <section className="max-w-[1440px] w-3/4
         mx-auto mt-10 lg:mt-20">
             <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
                 <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">

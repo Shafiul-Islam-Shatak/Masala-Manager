@@ -11,7 +11,7 @@ const OurChefs = () => {
     }, [])
 
     return (
-        <div>
+        <div className="max-w-[1440px] mx-auto">
             <div data-aos="fade-up">
                 <h2 className="text-[#B18B5E] font-bold text-3xl md:text-5xl  text-center mb-5 lg:mb-10 mt-5 lg:mt-10 w-3/4 mx-auto">Our Best Chefs</h2>
                 <p className="text-lg px-3 md:w-3/4 mx-auto text-center mb-10 md:mt-10   mt-3">Remember The Test</p>
