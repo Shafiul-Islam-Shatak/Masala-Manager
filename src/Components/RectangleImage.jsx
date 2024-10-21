@@ -1,7 +1,7 @@
 
 const RectangleImage = () => {
     return (
-        <div className="grid grid-cols-2 gap-5 rotate-[30deg] w-3/4 ">
+        <div className="grid grid-cols-2 gap-5 lg:rotate-[30deg] w-3/4 ">
             <div className="hover:scale-105">
                 <img className="rounded-3xl" src="https://img.freepik.com/free-photo/top-view-fried-chicken-with-sauce-french-fries_23-2148646626.jpg?t=st=1715686095~exp=1715689695~hmac=b8f0e6a3ad4b46b21eb9a4f568b02c31c24b868927952057da89bd87e9ea25bf&w=900" alt=""  />
             </div>
