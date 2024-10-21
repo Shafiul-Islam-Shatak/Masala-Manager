@@ -43,7 +43,7 @@ const AllFoods = () => {
                 <div data-aos="fade-up flex">
                     <h2 className="text-[#B18B5E] font-bold text-3xl md:text-5xl  text-center mb-10  w-3/4 mx-auto">Search Your Food</h2>
                     <form onSubmit={handleSearch} className="mb-10 mx-auto ">
-                        <div className="flex justify-center items-center">
+                        <div className="flex flex-col md:flex-row gap-y-5 justify-center items-center">
                         <label className="input  input-bordered w-90 md:w-96 flex items-center gap-2">
                             <input type="text" className="grow" name="search" placeholder="Search"
                             onChange={(e)=>setSearchText(e.target.value)}
@@ -60,7 +60,7 @@ const AllFoods = () => {
 
 
 
-            <div className="w-3/4 mx-auto grid grid-cols-1  lg:grid-cols-3 gap-5">
+            <div className="w-3/4 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5">
                 {
                     foods.map(food =>
                         <FoodCard

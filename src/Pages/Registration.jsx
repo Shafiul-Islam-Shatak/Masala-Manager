@@ -81,22 +81,22 @@ const Registration = () => {
                                     <label className="label" >
                                         <span className="label-text">Full Name</span>
                                     </label>
-                                    <input type="text" name="name" placeholder="Your name" className="input input-bordered text-black" required />
+                                    <input type="text" name="name" placeholder="Your name" className="input input-bordered dark:text-gray-300 text-black" required />
                                     <label className="label" >
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="email" name="email" placeholder="email" className="input input-bordered text-black" required />
+                                    <input type="email" name="email" placeholder="email" className="input input-bordered dark:text-gray-300 text-black" required />
                                     <label className="label" >
                                         <span className="label-text">Your Photo</span>
                                     </label>
-                                    <input type="url" name="photo" placeholder="Your Photo URL" className="input input-bordered text-black" required />
+                                    <input type="url" name="photo" placeholder="Your Photo URL" className="input input-bordered text-black dark:text-gray-300" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
                                     <div className="flex items-center">
-                                        <input type={showPassword ? 'password' : 'text'} name="password" placeholder="password" className="input input-bordered text-black w-full" required />
+                                        <input type={showPassword ? 'password' : 'text'} name="password" placeholder="password" className="input input-bordered text-black w-full dark:text-gray-300" required />
                                         {
                                             showPassword ?
                                                 <IoEyeOffSharp onClick={() => { setShowPassword(!showPassword) }} className="-ml-7"></IoEyeOffSharp> :
@@ -105,7 +105,7 @@ const Registration = () => {
                                     </div>
 
                                     <label className="label">
-                                        <p className="text-black">Already have a account?<Link to='/login' className="text-blue-800 font-semibold">Log in here</Link></p>
+                                        <p className="text-black dark:text-gray-300">Already have a account?<Link to='/login' className="text-blue-800 font-semibold dark:text-blue-300">Log in here</Link></p>
                                     </label>
 
                                 </div>

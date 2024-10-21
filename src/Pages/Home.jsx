@@ -21,7 +21,7 @@ const Home = () => {
             <div>
                 <TopSales></TopSales>
             </div>
-            <div className="mx-auto max-w-[1440px] flex justify-evenly flex-col md:flex-row w-3/4 bg-gray-300 items-center p-10">
+            <div className="mx-auto max-w-[1440px] flex justify-evenly flex-col md:flex-row w-3/4 bg-base-100 dark:bg-none items-center p-10">
                 <h2 className="text-[#B18B5E] font-bold text-3xl md:text-5xl   w-3/4">Discover our All Food</h2>
                 <Link to='/all-foods'>
                     <button className="btn border-none bg-orange-500 hover:bg-orange-300 text-black">Explore All Food

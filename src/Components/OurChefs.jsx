@@ -1,14 +1,39 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+
+
+const chefs = [
+    {
+      "chef_name": "John Doe",
+      "designation": "Head Chef",
+      "experience": "15 years",
+      "id": "1",
+      "chef_image": "https://restho-nextjs.vercel.app/assets/images/bg/chef-kitchen1.png"
+    },
+    {
+      "chef_name": "Jane Smith",
+      "designation": "Sous Chef",
+      "experience": "11 years",
+      "id": "2",
+      "chef_image": "https://restho-nextjs.vercel.app/assets/images/bg/chef-kitchen2.png"
+    },
+    {
+      "chef_name": "Michael Johnson",
+      "designation": "Pastry Chef",
+      "experience": "8 years",
+      "id": "2",
+      "chef_image": "https://restho-nextjs.vercel.app/assets/images/bg/chef-kitchen3.png"
+    }
+  ]
 
 const OurChefs = () => {
-    const [chefs, setChefs] = useState([])
-    useEffect(() => {
-        [
-            fetch('/public/chef.json')
-                .then(res => res.json())
-                .then(data => setChefs(data))
-        ]
-    }, [])
+    // const [chefs, setChefs] = useState([])
+    // useEffect(() => {
+    //     [
+    //         fetch('/public/chef.json')
+    //             .then(res => res.json())
+    //             .then(data => setChefs(data))
+    //     ]
+    // }, [])
 
     return (
         <div className="max-w-[1440px] mx-auto">
