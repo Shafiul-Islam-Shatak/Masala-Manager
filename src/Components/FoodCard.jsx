@@ -12,9 +12,9 @@ const FoodCard = ({food}) => {
                     Masala Manager | All-foods
                 </title>
             </Helmet>
-            <div data-aos="zoom-in" className="card  mx-auto  h-[450px] bg-base-100 shadow-xl lg:hover:scale-105 hover:drop-shadow-2xl">
-                <figure className="px-5 pt-5">
-                    <img src={image} alt="Shoes" className="rounded-2xl " />
+            <div data-aos="zoom-in" className="card  mx-auto max-w-72  lg:max-w-80  bg-base-100 shadow-xl lg:hover:scale-105 hover:drop-shadow-2xl">
+                <figure className="px-5 pt-5  ">
+                    <img src={image} alt="Shoes" className="rounded-2xl" />
                 </figure>
                 <div className="card-body  ">
                     <h2 className="card-title">{food_name}</h2>
