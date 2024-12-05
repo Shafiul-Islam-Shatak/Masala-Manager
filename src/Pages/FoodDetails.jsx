@@ -7,7 +7,7 @@ const FoodDetails = () => {
 
 
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white ">
             <Helmet>
                 <title>
                     Masala Manager | Food Details
@@ -23,12 +23,12 @@ const FoodDetails = () => {
 
                     <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
 
-                        <p className="block mt-4 text-2xl font-semibold text-gray-800 dark:text-white">
+                        <p className="block mt-4 text-2xl font-semibold text-gray-800 ">
                             Price : ${price}
                         </p>
                         <p className="inline-block mt-2 font-semibold">Available : Only {stock_quantity} Pcs</p>
 
-                        <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                        <p className="mt-3 text-sm text-gray-600  md:text-sm">
                             Details : {description}
                         </p>
                         <p className="text-sm  uppercase mt-5 font-semibold">category : {category}</p>
@@ -42,8 +42,8 @@ const FoodDetails = () => {
                             </div>
 
                             <div>
-                                <h1 className="text-sm text-gray-700 dark:text-gray-200 mt-5">Made By : {userName}</h1>
-                                <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Contact : {userEmail}</p>
+                                <h1 className="text-sm text-gray-700  mt-5">Made By : {userName}</h1>
+                                <p className="text-sm text-gray-500  mt-2">Contact : {userEmail}</p>
                             </div>
                         </div>
                         <h2 className={stock_quantity === 0 ? 'text-red-500' : 'hidden'} >This item is Out of Stock</h2>
